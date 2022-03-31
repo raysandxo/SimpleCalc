@@ -1,7 +1,7 @@
 /*
- * Simple Calculator v0.1
+ * Simple Calculator Program v0.2
  * 
- * Copyright 2022  <Rachel Sandover>
+ * Copyright 2022 Rachel Sandover <rachelsandover@outlook.com>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,43 +24,72 @@
 
 #include <stdio.h>
 
+// declare variables
+double operand1;
+double operand2;
+double sum;
+int x;
+// declare functions
+void add();
+void subtract();
+void multiply();
+void divide();
+	
+
 int main()
 {
-	//define variables
-	double operand1;
-	double operand2;
-	double sum;
-	int x;
-	
+	// welcome message
+	printf("SimpleCalc v0.2 by Rachel Sandover\n\n");
+
 	//take user input
-	printf("Enter a number: \n");
+	printf("Please select an operator:\n (1) - Add\n (2) - Subtract\n (3) - Multiply\n (4) - Divide\n");
+	scanf("%d", &x);
+	
+	printf("Enter first operand: \n");
 	scanf("%lf", &operand1);
 	
-	printf("Enter another number: \n");
+	printf("Enter second operand: \n");
 	scanf("%lf", &operand2);
 	
-	printf("What operator? : (1) - Add (2) - Subtract (3) - Multiply (4) - Divide\n");
-	scanf("%d", &x);
 	
 	//evaluate user input
 	switch(x) {
 		case 1: //add
-			sum = operand1 + operand2; break;
+			add(); break;
 		case 2: //subtract
-			sum = operand1 - operand2; break;
+			subtract(); break;
 		case 3: //multiply
-			sum = operand1 * operand2; break;
+			multiply(); break;
 		case 4:  //divide
-			sum = operand1 / operand2; break;
+			divide(); break;
 			
 	
 		default: //throw error
 		printf("Error!"); return 1;
 	}
 
-	//calculate sum
+	// display calculated sum
 	printf("Sum = %lf", sum);
 	
 	return 0;
+}
+
+// defining functions
+void add() {
+	sum = operand1 + operand2;
+}
+void subtract() {
+	sum = operand1 - operand2;
+}
+void multiply() {
+	sum = operand1 * operand2;
+}
+void divide(){
+	if(operand2 == 0) {
+		printf("Can't divide by zero!"); //throw error if user tries to divide by zero
+	}else {
+		sum = operand1 / operand2;
+	}
+	
 }
 
